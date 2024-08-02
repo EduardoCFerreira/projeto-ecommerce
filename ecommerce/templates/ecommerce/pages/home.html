@@ -2,14 +2,9 @@
 
     <body>
         {% include "ecommerce/partials/header.html" %}
-        <div class="search-contaier p-3">
-            <div class="container">
-                <form action="" class="search-form">
-                    <input type="search" class="search-input" name="q">
-                    <button type="submit" class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
-                </form>
-            </div>
-        </div>
+        {% include "ecommerce/partials/search.html" %}
+        {% include "ecommerce/partials/produto.html" %}
+        {% include "ecommerce/partials/footer.html" %}
     </body>
 
 </html>
