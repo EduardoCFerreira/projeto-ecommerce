@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load omfilters %}
+
+{% block conteudo %}
+<section id="detalhe-produto">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-5 pt-5">
+                <div class="card-produto">
+                    <div class="ratio ratio-4x3">
+                        <img src="{{produto.imagem.url}}" class="card-img-top">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-5 col-sm-5 pt-5">
+                <div class="card-produto">
+                    <div class="ratio ratio-4x3">
+                        <img src="{{produto.imagem.url}}" class="card-img-top">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-2 col-sm-2 pt-5">
+                <div class="card-body pt-3 pl-5">
+                    <h3>{{produto.nome}}</h3>
+                    <a href="#" class="produto-link">Categoria: </a>
+                    <h4>Quantidade: </h4>
+                    <form action="{% url 'produto:adicionaraocarrinho' %}" id='adicionar-carrinho'>
+                        <div class="form-group">
+                            <h4>{{produto.preco | formata_preco}}</h4>   
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle btn-dark btn-custom" type="button" data-bs-toggle="dropdown" aria-expanded="false" name="vid" value="{{ variacao.id }}"><i class="fa-solid fa-ruler-horizontal"></i> Tamanho
+                            </button>
+                            <ul class="dropdown-menu">
+                                {% for variacao in produto.variacao_set.all %}
+                                    <li><a class="dropdown-item" href="#">{{variacao.nome}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                      </div>
+                        <div class="btn-add-custom">
+                            <button type="submit" class="btn btn-dark btn-add btn-custom"><i class="fa-solid fa-cart-shopping"></i> Adicionar ao carrinho</button>
+                        </div>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock conteudo %}
