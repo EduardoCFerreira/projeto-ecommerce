@@ -24,13 +24,17 @@
                     <h3>{{produto.nome}}</h3>
                     <a href="#" class="produto-link">Categoria: </a>
                     <h4>Quantidade: </h4>
+                    {% if produto.preco_promocao %}
+                    <h4>{{produto.preco_promocao | formata_preco}}</h4>
+                    {% else %}
                     <h4>{{produto.preco | formata_preco}}</h4>
+                    {% endif %}
 
                         <form action="{% url 'produto:adicionaraocarrinho' %}" id="form-add-to-cart">
                                 <div class="form-group">
                                     <select id="select-variacoes" name="vid" class="form-control form-control-lg">
                                         {% for variacao in produto.variacao_set.all %}
-                                            <option value="{{ variacao.id }}">{{ variacao.nome }}
+                                            <option data-preco="{{ variacao.preco}}" data-preco-promocao="{{variacao.preco_promocao}}" value="{{ variacao.id }}">{{ variacao.nome }}
                                         </option>
                                         {% endfor %}
                                     </select>

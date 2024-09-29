@@ -10,7 +10,9 @@
         {% include "parciais/header.html" %}
 
         <main>
-            {% block conteudo %}{% endblock conteudo %}
+            {% block conteudo %}
+            {% include "parciais/_messages.html" %}
+            {% endblock conteudo %}
         </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{% static "assets/script.js" %}"></script>
