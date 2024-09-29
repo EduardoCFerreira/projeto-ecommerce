@@ -47,7 +47,7 @@ class Variacao(models.Model):
                                                         # ^^^^^^ <-- Quando deletar a variação,
                                                         #  O produto é apagado tbm.
     nome = models.CharField(max_length=200)
-    preco= models.FloatField()
+    preco = models.FloatField()
     preco_promocao = models.FloatField(default=0)
     estoque = models.PositiveIntegerField(default=1)
 
