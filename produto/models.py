@@ -3,6 +3,7 @@ from PIL import Image
 import os
 from django.conf import settings
 from django.utils.text import slugify
+from utils import utils
 
 class Produto(models.Model):
     nome = models.CharField(max_length=255)
@@ -21,11 +22,11 @@ class Produto(models.Model):
     )
 
     def get_preco_formatado(self):
-        return f'R$ {self.preco:.2f}'.replace('.', ',')
+        return utils.formata_preco(self.preco)
     get_preco_formatado.short_description = "Preco"
 
     def get_preco_promocao_formatado(self):
-        return f'R$ {self.preco_promocao:.2f}'.replace('.', ',')
+        return utils.formata_preco(self.preco_promocao)
     get_preco_promocao_formatado.short_description = "Preco de promoção"
     # Essa função que foi criada retorna o próprio valor, onde é utilizada um fStr para
     # mudar o preco para ponto flutuante e chama a função replace para mudar os . para ,
